@@ -7,11 +7,13 @@ COPY package.json ./
 
 RUN npm install
 
-COPY ./ ./
+COPY . .
 
-CMD ["npm", "run", "build"]
+RUN npm run build
 
 # Now for the NGINX/running paret
 FROM nginx
+
+EXPOSE 80
 
 COPY --from=builder /usr/app/build /usr/share/nginx/html

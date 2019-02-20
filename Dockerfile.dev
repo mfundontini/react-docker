@@ -1,0 +1,13 @@
+FROM node:alpine
+
+WORKDIR /usr/app
+
+COPY package.json .
+
+RUN npm install
+
+COPY . .
+
+CMD ["npm", "run", "start"]
+
+# Note that using docker exec -it <process-id> <separate command> will achive the same thing as using two separate services
